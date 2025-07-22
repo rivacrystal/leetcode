@@ -25,9 +25,12 @@ public:
     int romanToInt(string s) {
         int result = 0, prev = 0;
 
+        // loop start at end of roman numeral and work backward
         for (int i = s.length() - 1; i >= 0; i--) {
             int current = charToDigit(s[i]);
+            // if current is greater than the previous digit, then subtract current from the result, otherwise add current
             result += (current < prev) ? -current : current;
+            // prev now becomes current, so we can check if V > I or somesuch
             prev = current;
         }
 
